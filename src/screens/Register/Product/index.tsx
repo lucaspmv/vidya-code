@@ -1,7 +1,14 @@
 import React from 'react';
 
-import { Container } from './styles';
+import { Container, CustomHeader, Title } from './styles';
 
 export function ProductRegister() {
-  return <Container />;
+  return (
+    <>
+      <CustomHeader />
+      <Container>
+        <Title>Product Register</Title>
+      </Container>
+    </>
+  );
 }

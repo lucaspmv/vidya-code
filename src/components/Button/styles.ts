@@ -12,6 +12,7 @@ export const Container = styled.TouchableOpacity.attrs(() => ({
   border-radius: 8px;
 `;
 
-export const ButtonText = styled(Text).attrs(() => ({
+export const ButtonText = styled(Text).attrs(({ theme }) => ({
   size: 16,
+  color: theme.colors.white,
 }))``;
