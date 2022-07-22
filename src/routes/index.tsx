@@ -7,10 +7,11 @@ import { SignIn } from '../screens/SignIn';
 export type RoutesParamList = AppStackParamList;
 
 export function Routes() {
+  const isAuthenticated = false;
+
   return (
     <NavigationContainer>
-      <AppRoutes />
-      {/* <SignIn /> */}
+      {isAuthenticated ? <AppRoutes /> : <SignIn />}
     </NavigationContainer>
   );
 }
