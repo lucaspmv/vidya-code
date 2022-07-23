@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 import { Button } from '../../components/Button';
-import { InputText } from '../../components/InputText';
+import { InputText } from '../../components/Inputs/Text';
 import { Text } from '../../components/Text';
 
 export const Container = styled.View`

@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-
 import { ActivityIndicator, View } from 'react-native';
-import { useTheme } from 'styled-components';
+import { useTheme } from 'styled-components/native';
+
 import { AppRoutes, AppStackParamList } from './app.routes';
 import { SignIn } from '../screens/SignIn';
 import { getItem } from '../services/AsyncStorage';

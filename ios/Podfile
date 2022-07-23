@@ -28,6 +28,9 @@ target 'vidya' do
     # Pods for testing
   end
 
+  # LIB - react-native-text-input-mask
+  pod 'React-RCTText', :path => '../node_modules/react-native/Libraries/Text', :modular_headers => true
+
   post_install do |installer|
     react_native_post_install(installer)
     __apply_Xcode_12_5_M1_post_install_workaround(installer)

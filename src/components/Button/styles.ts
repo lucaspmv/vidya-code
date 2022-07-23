@@ -4,7 +4,6 @@ import { Text } from '../Text';
 export const Container = styled.TouchableOpacity.attrs(() => ({
   activeOpacity: 0.8,
 }))`
-  width: 100%;
   height: 56px;
   justify-content: center;
   align-items: center;
