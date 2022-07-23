@@ -20,7 +20,7 @@ export const Container = styled.View<ContainerProps>`
     ? `${getStatusBarHeight(true) + 100}px`
     : '100px'};
 
-  background-color: ${({ theme, backgroundColor = theme.colors.gray_2 }) =>
+  background-color: ${({ theme, backgroundColor = theme.colors.gray5 }) =>
     backgroundColor};
   justify-content: flex-end;
 `;

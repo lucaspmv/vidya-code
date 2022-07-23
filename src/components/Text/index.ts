@@ -12,5 +12,5 @@ export const Text = styled.Text<TextProps>`
     weight === 'bold' ? 'Roboto-Bold' : 'Roboto-Regular'};
   font-size: ${({ size }) =>
     size ? `${RFValue(size)}px` : `${RFValue(16)}px`};
-  color: ${({ color, theme }) => color ?? theme.colors.gray_2};
+  color: ${({ color, theme }) => color ?? theme.colors.gray5};
 `;

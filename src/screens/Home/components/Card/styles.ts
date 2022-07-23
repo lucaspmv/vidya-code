@@ -22,7 +22,7 @@ export const Container = styled.TouchableOpacity.attrs(() => ({
       }
       return theme.colors.cyan;
     }
-    return '#BDCAD1';
+    return theme.colors.gray3;
   }};
   border-radius: 8px;
   flex-direction: row;
