@@ -4,7 +4,7 @@ export default {
     purple: '#6B71F2',
     blue: '#49A3F2',
     cyan: '#07D9D9',
-    red: '#C11E4B',
+    red: '#F64F77',
     gray1: '#f9fafb',
     gray2: '#DCE2E5',
     gray3: '#BDCAD1',

@@ -20,8 +20,8 @@ export const Title = styled(Text).attrs(({ theme }) => ({
   margin-bottom: 24px;
 `;
 
-export const EmailInput = styled(InputText).attrs(() => ({
-  label: 'E-mail',
+export const UserNameInput = styled(InputText).attrs(() => ({
+  label: 'Nome de usuário',
 }))``;
 
 export const PasswordInput = styled(InputText).attrs(() => ({
