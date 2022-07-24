@@ -70,7 +70,6 @@ export function CustomerRegister() {
 
   const { goBack } = useNavigation();
 
-  const [areInputsDisabled, setAreInputsDisabled] = useState(false);
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const [isButtonLoading, setIsButtonLoading] = useState(false);
 
@@ -119,16 +118,12 @@ export function CustomerRegister() {
           await validateSchema();
 
           clearErrors();
-
-          setAreInputsDisabled(true);
         } catch (err) {
           console.log(err);
         }
-      } else if (areInputsDisabled) {
-        setAreInputsDisabled(false);
       }
     },
-    [areInputsDisabled, clearErrors, setValue, validateSchema],
+    [clearErrors, setValue, validateSchema],
   );
 
   const handleSubmit = useCallback(async () => {
@@ -171,7 +166,6 @@ export function CustomerRegister() {
           onChangeText={validateSchema}
           name="socialReason"
           label="Razão Social"
-          disabled={areInputsDisabled}
           error={errors.socialReason?.message}
           primaryColor={theme.colors.purple}
         />
@@ -181,7 +175,6 @@ export function CustomerRegister() {
           onChangeText={validateSchema}
           name="fantasyName"
           label="Nome Fantasia"
-          disabled={areInputsDisabled}
           error={errors.fantasyName?.message}
           primaryColor={theme.colors.purple}
         />
@@ -193,7 +186,6 @@ export function CustomerRegister() {
           label="CEP"
           mask="[00].[000]-[000]"
           keyboardType="numeric"
-          disabled={areInputsDisabled}
           error={errors.zipCode?.message}
           primaryColor={theme.colors.purple}
         />
@@ -203,7 +195,6 @@ export function CustomerRegister() {
           onChangeText={validateSchema}
           name="state"
           label="Estado"
-          disabled={areInputsDisabled}
           error={errors.state?.message}
           primaryColor={theme.colors.purple}
         />
@@ -213,7 +204,6 @@ export function CustomerRegister() {
           onChangeText={validateSchema}
           name="city"
           label="Cidade"
-          disabled={areInputsDisabled}
           error={errors.city?.message}
           primaryColor={theme.colors.purple}
         />
@@ -223,7 +213,6 @@ export function CustomerRegister() {
           onChangeText={validateSchema}
           name="district"
           label="Bairro"
-          disabled={areInputsDisabled}
           error={errors.district?.message}
           primaryColor={theme.colors.purple}
         />
@@ -234,7 +223,6 @@ export function CustomerRegister() {
           name="number"
           label="Número"
           keyboardType="numeric"
-          disabled={areInputsDisabled}
           error={errors.number?.message}
           primaryColor={theme.colors.purple}
         />
@@ -244,7 +232,6 @@ export function CustomerRegister() {
           onChangeText={validateSchema}
           name="publicPlace"
           label="Logradouro"
-          disabled={areInputsDisabled}
           error={errors.publicPlace?.message}
           primaryColor={theme.colors.purple}
         />
@@ -254,7 +241,6 @@ export function CustomerRegister() {
           onChangeText={validateSchema}
           name="email"
           label="E-mail"
-          disabled={areInputsDisabled}
           error={errors.email?.message}
           primaryColor={theme.colors.purple}
         />
@@ -265,7 +251,6 @@ export function CustomerRegister() {
           name="phone"
           label="Telefone"
           mask="([00]) [0000]-[0000]"
-          disabled={areInputsDisabled}
           error={errors.phone?.message}
           primaryColor={theme.colors.purple}
         />

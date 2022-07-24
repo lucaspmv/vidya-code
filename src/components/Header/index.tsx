@@ -1,7 +1,9 @@
-import { useNavigation } from '@react-navigation/native';
 import React, { useCallback } from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 import { AsyncStorageKeyEnum } from '../../enums/AsyncStorageKeyEnum';
+import { RouteNameEnum } from '../../enums/RouteNameEnum';
+
 import { removeItem } from '../../services/AsyncStorage';
 
 import {
@@ -28,11 +30,19 @@ export function Header({
   canGoBack = false,
   canSignOut = false,
 }: HeaderProps) {
-  const { goBack } = useNavigation();
+  const { goBack, reset } = useNavigation();
 
   const handleSignOut = useCallback(async () => {
     await removeItem(AsyncStorageKeyEnum.TOKEN);
-  }, []);
+    reset({
+      index: 0,
+      routes: [
+        {
+          name: RouteNameEnum.SIGN_IN,
+        },
+      ],
+    });
+  }, [reset]);
 
   return (
     <>
