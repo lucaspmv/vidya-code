@@ -18,8 +18,8 @@ export function SignIn() {
 
   const [isButtonLoading, setIsButtonLoading] = useState(false);
 
-  const [userName, setUserName] = useState<string>();
-  const [password, setPassword] = useState<string>();
+  const [userName, setUserName] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleSignIn = useCallback(async () => {
     setIsButtonLoading(true);
@@ -42,7 +42,11 @@ export function SignIn() {
       <UserNameInput onChangeText={setUserName} />
       <Space height={16} />
       <PasswordInput secureTextEntry onChangeText={setPassword} />
-      <SignInButton onPress={handleSignIn} loading={isButtonLoading} />
+      <SignInButton
+        onPress={handleSignIn}
+        loading={isButtonLoading}
+        disabled={userName === '' || password === ''}
+      />
     </Container>
   );
 }

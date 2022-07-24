@@ -17,7 +17,7 @@ export const Title = styled(Text).attrs(({ theme }) => ({
   color: theme.colors.purple,
   weight: 'bold',
 }))`
-  margin-bottom: 24px;
+  margin-bottom: 34px;
 `;
 
 export const UserNameInput = styled(TextInput).attrs(() => ({
@@ -31,5 +31,5 @@ export const PasswordInput = styled(TextInput).attrs(() => ({
 export const SignInButton = styled(Button).attrs(() => ({
   text: 'Entrar',
 }))`
-  margin-top: 32px;
+  margin-top: 40px;
 `;

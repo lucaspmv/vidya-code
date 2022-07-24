@@ -11,7 +11,7 @@ export const Container = styled.TouchableOpacity.attrs(() => ({
   activeOpacity: 0.8,
 }))<ContainerProps>`
   padding: 30px 20px;
-  border-width: 1px;
+  border-width: ${({ isActive }) => (isActive ? '2px' : '1px')};
   border-color: ${({ type, isActive, theme }) => {
     if (isActive) {
       if (type === 'customer') {
