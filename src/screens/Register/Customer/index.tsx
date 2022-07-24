@@ -10,6 +10,7 @@ import { Container, CustomHeader, SubmitButton } from './styles';
 import { validateCNPJ } from '../../../utils/validateCNPJ';
 
 import { TextFormInput } from '../../../components/Input/Text/Form';
+import { getDataByCNPJ } from '../../../services/getDataByCNPJ';
 
 interface FormData {
   cnpj: string;
@@ -58,17 +59,56 @@ export function CustomerRegister() {
   const {
     control,
     getValues,
+    setValue,
     formState: { errors, isValid },
   } = useForm<FormData>({
     resolver: yupResolver(Yup.object().shape(schema)),
     mode: 'onChange',
   });
 
-  const handleSubmit = useCallback(() => {
+  const handleSubmit = useCallback(async () => {
     const data = getValues();
 
     console.log(data);
   }, [getValues]);
+
+  const getCompanyDataByCNPJ = useCallback(
+    async (cnpj: string) => {
+      // const { cnpj } = getValues();
+      console.log(cnpj);
+      if (cnpj.length === 18) {
+        try {
+          const {
+            nome,
+            fantasia,
+            cep,
+            uf,
+            bairro,
+            numero,
+            logradouro,
+            email,
+            telefone,
+          } = await getDataByCNPJ(cnpj);
+
+          setValue('socialReason', nome);
+          setValue('fantasyName', fantasia);
+
+          console.log(nome);
+          console.log(fantasia);
+          console.log(cep);
+          console.log(uf);
+          console.log(bairro);
+          console.log(numero);
+          console.log(logradouro);
+          console.log(email);
+          console.log(telefone);
+        } catch (err) {
+          console.log(err);
+        }
+      }
+    },
+    [setValue],
+  );
 
   return (
     <>
@@ -76,6 +116,7 @@ export function CustomerRegister() {
       <Container>
         <TextFormInput
           control={control as Control<any, any>}
+          onChangeText={cnpj => getCompanyDataByCNPJ(cnpj)}
           name="cnpj"
           label="CNPJ"
           mask="[00].[000].[000]/[0000]-[00]"

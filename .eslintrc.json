@@ -54,6 +54,7 @@
         "react/jsx-props-no-spreading": "off",
         "no-shadow": "off",
         "react/require-default-props": "off",
+        "import/no-unresolved": "off",
         "prettier/prettier": "error"
     },
     "settings": {
