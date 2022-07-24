@@ -1,4 +1,5 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
+import { TextInput } from 'react-native';
 import { useTheme } from 'styled-components/native';
 import { Control, useForm } from 'react-hook-form';
 import * as Yup from 'yup';
@@ -57,6 +58,8 @@ const schema = {
 export function CustomerRegister() {
   const theme = useTheme();
 
+  const cnpjTextInputRef = useRef<TextInput>(null);
+
   const {
     control,
     getValues,
@@ -90,6 +93,8 @@ export function CustomerRegister() {
   const getCompanyDataByCNPJ = useCallback(
     async (cnpj: string) => {
       if (cnpj.length === 18) {
+        cnpjTextInputRef.current?.blur();
+
         try {
           const {
             nome,
@@ -148,6 +153,7 @@ export function CustomerRegister() {
       <CustomHeader />
       <Container>
         <TextFormInput
+          inputRef={cnpjTextInputRef}
           control={control as Control<any, any>}
           onChangeText={cnpj => {
             validateSchema();

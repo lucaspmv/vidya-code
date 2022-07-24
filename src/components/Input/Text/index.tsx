@@ -1,10 +1,14 @@
 import React, { useCallback, useState } from 'react';
-import { TextInputProps as RNTextInputProps } from 'react-native';
+import {
+  TextInput as RNTextInput,
+  TextInputProps as RNTextInputProps,
+} from 'react-native';
 
 import { ErrorText, Input, InputMask, LabelText } from './styles';
 
 export interface TextInputProps extends RNTextInputProps {
   label: string;
+  inputRef?: React.Ref<RNTextInput>;
   disabled?: boolean;
   mask?: string;
   multiline?: boolean;
@@ -14,6 +18,7 @@ export interface TextInputProps extends RNTextInputProps {
 
 export function TextInput({
   label,
+  inputRef,
   disabled = false,
   mask,
   multiline,
@@ -36,6 +41,7 @@ export function TextInput({
       <LabelText error={!!error}>{label}</LabelText>
       {!mask ? (
         <Input
+          ref={inputRef}
           onFocus={handleFocus}
           onBlur={handleBlur}
           isActive={isActive}
@@ -50,6 +56,7 @@ export function TextInput({
         />
       ) : (
         <InputMask
+          ref={inputRef}
           onFocus={handleFocus}
           onBlur={handleBlur}
           mask={mask}
@@ -63,7 +70,7 @@ export function TextInput({
           {...rest}
         />
       )}
-      {!!error && <ErrorText>Erro: {error}</ErrorText>}
+      {!!error && <ErrorText>{error}</ErrorText>}
     </>
   );
 }
