@@ -8,7 +8,7 @@ interface ContainerProps {
 }
 
 export const Container = styled.TouchableOpacity.attrs(() => ({
-  activeOpacity: 0.8,
+  activeOpacity: 0.6,
 }))<ContainerProps>`
   padding: 30px 20px;
   border-width: ${({ isActive }) => (isActive ? '2px' : '1px')};

@@ -7,6 +7,7 @@ import { Home } from '../screens/Home';
 import { CustomerRegister } from '../screens/Register/Customer';
 import { ProductRegister } from '../screens/Register/Product';
 import { SignIn } from '../screens/SignIn';
+import { UserRegister } from '../screens/Register/User';
 
 import { getItem } from '../services/AsyncStorage';
 
@@ -53,6 +54,7 @@ export function AppRoutes() {
         name={RouteNameEnum.PRODUCT_REGISTER}
         component={ProductRegister}
       />
+      <Screen name={RouteNameEnum.USER_REGISTER} component={UserRegister} />
     </Navigator>
   ) : (
     <View
@@ -73,4 +75,5 @@ export type AppStackParamList = {
   [RouteNameEnum.HOME]: undefined;
   [RouteNameEnum.CUSTOMER_REGISTER]: undefined;
   [RouteNameEnum.PRODUCT_REGISTER]: undefined;
+  [RouteNameEnum.USER_REGISTER]: undefined;
 };
