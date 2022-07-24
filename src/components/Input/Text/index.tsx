@@ -1,12 +1,13 @@
 import React, { useCallback, useState } from 'react';
-import { TextInputProps as NativeTextInputProps } from 'react-native';
+import { TextInputProps as RNTextInputProps } from 'react-native';
 
 import { ErrorText, Input, InputMask, LabelText } from './styles';
 
-export interface TextInputProps extends NativeTextInputProps {
+export interface TextInputProps extends RNTextInputProps {
   label: string;
   disabled?: boolean;
   mask?: string;
+  multiline?: boolean;
   primaryColor?: string;
   error?: string;
 }
@@ -15,6 +16,7 @@ export function TextInput({
   label,
   disabled = false,
   mask,
+  multiline,
   primaryColor,
   error,
   ...rest
@@ -39,6 +41,7 @@ export function TextInput({
           isActive={isActive}
           editable={!disabled}
           disabled={disabled}
+          multiline={multiline}
           primaryColor={primaryColor}
           autoCapitalize="none"
           autoCorrect={false}

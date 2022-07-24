@@ -40,7 +40,7 @@ const schema = {
   fantasyName: Yup.string().required('O nome fantasia é obrigatório.'),
   zipCode: Yup.string()
     .required('O CEP é obrigatório.')
-    .min(9, 'O CEP precisa ser um número válido.'),
+    .min(10, 'O CEP precisa ser um número válido.'),
   state: Yup.string().required('O estado é obrigatório.'),
   city: Yup.string().required('A cidade é obrigatória.'),
   district: Yup.string().required('O bairro é obrigatório.'),
@@ -191,7 +191,7 @@ export function CustomerRegister() {
           onChangeText={validateSchema}
           name="zipCode"
           label="CEP"
-          mask="[00000]-[000]"
+          mask="[00].[000]-[000]"
           keyboardType="numeric"
           disabled={areInputsDisabled}
           error={errors.zipCode?.message}

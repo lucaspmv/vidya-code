@@ -8,6 +8,7 @@ import { Text } from '../../Text';
 interface InputProps {
   isActive: boolean;
   disabled: boolean;
+  multiline?: boolean;
   primaryColor?: string;
   error?: boolean;
 }
@@ -23,13 +24,15 @@ export const LabelText = styled(Text).attrs(({ theme, error }) => ({
 `;
 
 export const Input = styled(TextInput).attrs<InputProps>(
-  ({ theme, primaryColor }) => ({
-    placeholderTextColor: theme.colors.gray4 as ColorValue,
+  ({ theme, primaryColor, multiline = false }) => ({
     selectionColor: primaryColor
       ? (primaryColor as ColorValue)
       : (theme.colors.gray5 as ColorValue),
+    multiline,
+    textAlignVertical: 'top',
   }),
 )<InputProps>`
+  width: 100%;
   font-size: ${RFValue(17)}px;
   padding: 18px;
   color: ${({ error, isActive, theme }) =>
@@ -38,6 +41,12 @@ export const Input = styled(TextInput).attrs<InputProps>(
   border-width: 1px;
   border-color: ${({ theme }) => theme.colors.gray2};
   border-radius: 8px;
+
+  ${({ multiline }) =>
+    multiline &&
+    css`
+      height: 140px;
+    `}
 
   ${({ disabled, theme }) =>
     disabled &&
@@ -63,7 +72,6 @@ export const Input = styled(TextInput).attrs<InputProps>(
 
 export const InputMask = styled(TextInputMask).attrs<InputProps>(
   ({ theme, primaryColor }) => ({
-    placeholderTextColor: theme.colors.gray4 as ColorValue,
     selectionColor: primaryColor
       ? (primaryColor as ColorValue)
       : (theme.colors.gray5 as ColorValue),

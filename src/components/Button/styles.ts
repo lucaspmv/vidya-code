@@ -4,15 +4,18 @@ import { Text } from '../Text';
 
 interface ContainerProps {
   loading: boolean;
+  backgroundColor?: string;
 }
 
 export const Container = styled(TouchableOpacity).attrs(() => ({
-  activeOpacity: 0.8 as number | undefined,
+  activeOpacity: 0.8 as number,
 }))<ContainerProps>`
+  width: 100%;
   height: 56px;
   justify-content: center;
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.purple};
+  background-color: ${({ theme, backgroundColor = theme.colors.purple }) =>
+    backgroundColor};
   border-radius: 8px;
 
   ${({ disabled, loading }) =>

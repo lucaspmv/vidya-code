@@ -29,7 +29,7 @@ const verifierDigit = (digits: string): number => {
 };
 
 const strip = (number: string): string => {
-  return (number || '').replace(STRIP_REGEX, '');
+  return number.replace(STRIP_REGEX, '');
 };
 
 export function validateCNPJ(strCNPJ: string): boolean {
