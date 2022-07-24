@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 import { Button } from '../../components/Button';
-import { InputText } from '../../components/Inputs/Text';
+import { TextInput } from '../../components/Input/Text';
 import { Text } from '../../components/Text';
 
 export const Container = styled.View`
@@ -20,11 +20,11 @@ export const Title = styled(Text).attrs(({ theme }) => ({
   margin-bottom: 24px;
 `;
 
-export const UserNameInput = styled(InputText).attrs(() => ({
+export const UserNameInput = styled(TextInput).attrs(() => ({
   label: 'Nome de usuário',
 }))``;
 
-export const PasswordInput = styled(InputText).attrs(() => ({
+export const PasswordInput = styled(TextInput).attrs(() => ({
   label: 'Senha',
 }))``;
 

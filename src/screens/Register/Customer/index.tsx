@@ -1,40 +1,173 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useTheme } from 'styled-components/native';
-import { InputText } from '../../../components/Inputs/Text';
+import { Control, useForm } from 'react-hook-form';
+import * as Yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 import { Space } from '../../../components/Space';
 
 import { Container, CustomHeader, SubmitButton } from './styles';
+import { validateCNPJ } from '../../../utils/validateCNPJ';
+
+import { TextFormInput } from '../../../components/Input/Text/Form';
+
+interface FormData {
+  cnpj: string;
+  socialReason: string;
+  fantasyName: string;
+  zipCode: string;
+  state: string;
+  city: string;
+  district: string;
+  number: number;
+  publicPlace: string;
+  email: string;
+  phone: string;
+}
+
+const schema = {
+  cnpj: Yup.string()
+    .required('O CNPJ é obrigatório.')
+    .min(18, 'O CNPJ precisa ser um número válido.')
+    .test({
+      name: 'CNPJ validation',
+      test: value => validateCNPJ(value ?? ''),
+      message: 'O CNPJ informado é inválido.',
+    }),
+  socialReason: Yup.string().required('A razão social é obrigatória.'),
+  fantasyName: Yup.string().required('O nome fantasia é obrigatório.'),
+  zipCode: Yup.string()
+    .required('O CEP é obrigatório.')
+    .min(9, 'O CEP precisa ser um número válido.'),
+  state: Yup.string().required('O estado é obrigatório.'),
+  city: Yup.string().required('A cidade é obrigatória.'),
+  district: Yup.string().required('O bairro é obrigatório.'),
+  number: Yup.string().required('O número é obrigatório.'),
+  publicPlace: Yup.string().required('O logradouro é obrigatório.'),
+  email: Yup.string()
+    .required('O nome fantasia é obrigatório.')
+    .email('E-mail inválido.'),
+  phone: Yup.string()
+    .required('O nome fantasia é obrigatório.')
+    .min(15, 'O telefone precisar ser um número válido.'),
+};
 
 export function CustomerRegister() {
   const theme = useTheme();
+
+  const {
+    control,
+    getValues,
+    formState: { errors, isValid },
+  } = useForm<FormData>({
+    resolver: yupResolver(Yup.object().shape(schema)),
+    mode: 'onChange',
+  });
+
+  const handleSubmit = useCallback(() => {
+    const data = getValues();
+
+    console.log(data);
+  }, [getValues]);
 
   return (
     <>
       <CustomHeader />
       <Container>
-        <InputText label="CPNJ" />
+        <TextFormInput
+          control={control as Control<any, any>}
+          name="cnpj"
+          label="CNPJ"
+          mask="[00].[000].[000]/[0000]-[00]"
+          keyboardType="numeric"
+          error={errors.cnpj?.message}
+          primaryColor={theme.colors.purple}
+        />
         <Space height={40} />
-        <InputText label="Razão Social" />
+        <TextFormInput
+          control={control as Control<any, any>}
+          name="socialReason"
+          label="Razão Social"
+          error={errors.socialReason?.message}
+          primaryColor={theme.colors.purple}
+        />
         <Space height={40} />
-        <InputText label="Nome Fantasia" />
+        <TextFormInput
+          control={control as Control<any, any>}
+          name="fantasyName"
+          label="Nome Fantasia"
+          error={errors.fantasyName?.message}
+          primaryColor={theme.colors.purple}
+        />
         <Space height={40} />
-        <InputText label="CEP" />
+        <TextFormInput
+          control={control as Control<any, any>}
+          name="zipCode"
+          label="CEP"
+          mask="[00000]-[000]"
+          keyboardType="numeric"
+          error={errors.zipCode?.message}
+          primaryColor={theme.colors.purple}
+        />
         <Space height={40} />
-        <InputText label="Estado" />
+        <TextFormInput
+          control={control as Control<any, any>}
+          name="state"
+          label="Estado"
+          error={errors.state?.message}
+          primaryColor={theme.colors.purple}
+        />
         <Space height={40} />
-        <InputText label="Cidade" />
+        <TextFormInput
+          control={control as Control<any, any>}
+          name="city"
+          label="Cidade"
+          error={errors.city?.message}
+          primaryColor={theme.colors.purple}
+        />
         <Space height={40} />
-        <InputText label="Bairro" />
+        <TextFormInput
+          control={control as Control<any, any>}
+          name="district"
+          label="Bairro"
+          error={errors.district?.message}
+          primaryColor={theme.colors.purple}
+        />
         <Space height={40} />
-        <InputText label="Número" />
+        <TextFormInput
+          control={control as Control<any, any>}
+          name="number"
+          label="Número"
+          keyboardType="numeric"
+          error={errors.number?.message}
+          primaryColor={theme.colors.purple}
+        />
         <Space height={40} />
-        <InputText label="Logradouro" />
+        <TextFormInput
+          control={control as Control<any, any>}
+          name="publicPlace"
+          label="Logradouro"
+          error={errors.publicPlace?.message}
+          primaryColor={theme.colors.purple}
+        />
         <Space height={40} />
-        <InputText label="Email" />
+        <TextFormInput
+          control={control as Control<any, any>}
+          name="email"
+          label="E-mail"
+          error={errors.email?.message}
+          primaryColor={theme.colors.purple}
+        />
         <Space height={40} />
-        <InputText label="Telefone" />
-        <SubmitButton />
+        <TextFormInput
+          control={control as Control<any, any>}
+          name="phone"
+          label="Telefone"
+          mask="([00]) [00000]-[0000]"
+          error={errors.phone?.message}
+          primaryColor={theme.colors.purple}
+        />
+        <SubmitButton onPress={handleSubmit} disabled={!isValid} />
       </Container>
     </>
   );

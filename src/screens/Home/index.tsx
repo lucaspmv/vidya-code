@@ -42,13 +42,13 @@ export function Home() {
           onPress={handleNewCustomer}
           isActive={cardType === 'customer'}
         />
-        <Space height={18} />
+        <Space height={26} />
         <Card
           type="product"
           onPress={handleNewProduct}
           isActive={cardType === 'product'}
         />
-        <Space height={18} />
+        <Space height={26} />
         <Card
           type="user"
           onPress={handleNewUser}
