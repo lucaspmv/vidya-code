@@ -1,24 +1,20 @@
 import styled from 'styled-components/native';
-import { FlatList, FlatListProps } from 'react-native';
 
+import { Button } from '../../../components/Button';
 import { Header } from '../../../components/Header';
-import { CardProps } from './components/Card';
+import { ScrollViewContainer } from '../../../components/ScrollViewContainer';
 
 export const CustomHeader = styled(Header).attrs(({ theme }) => ({
   backgroundColor: theme.colors.cyan,
-  text: 'Clientes',
+  text: 'Novo Usuário',
   canGoBack: true,
 }))``;
 
-export const Container = styled(
-  FlatList as new (props: FlatListProps<CardProps>) => FlatList<CardProps>,
-).attrs(() => ({
-  showsVerticalScrollIndicator: false,
-  contentContainerStyle: {
-    paddingTop: 40,
-    paddingHorizontal: 20,
-    paddingBottom: 80,
-  },
+export const Container = styled(ScrollViewContainer)``;
+
+export const SubmitButton = styled(Button).attrs(({ theme }) => ({
+  text: 'Confirmar',
+  backgroundColor: theme.colors.cyan,
 }))`
-  background-color: ${({ theme }) => theme.colors.white};
+  margin-top: 60px;
 `;

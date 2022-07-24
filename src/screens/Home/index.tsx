@@ -24,7 +24,7 @@ export function Home() {
 
   const handleNewUser = useCallback(() => {
     setCardType('user');
-    navigate(RouteNameEnum.USER_REGISTER);
+    navigate(RouteNameEnum.USER_REGISTER_CUSTOMERS);
   }, [navigate]);
 
   useFocusEffect(

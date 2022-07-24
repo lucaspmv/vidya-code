@@ -2,6 +2,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigation } from '@react-navigation/native';
 import React, { useCallback, useState } from 'react';
 import { Control, useForm } from 'react-hook-form';
+import { Alert } from 'react-native';
 import { useTheme } from 'styled-components/native';
 import * as Yup from 'yup';
 
@@ -43,14 +44,15 @@ export function ProductRegister() {
     const data = getValues();
 
     try {
-      // send the data to api
+      // enviar para api
       console.log(data);
-      // timeout only for visual effect while there isn't an api to send the data
+      // timeout só para efeito visual, já que não existe uma api
       setTimeout(() => {
+        Alert.alert('Sucesso!', 'Produto cadastrado');
         goBack();
       }, 2000);
-    } catch (err) {
-      console.log(err);
+    } catch {
+      Alert.alert('Erro!', 'Falha no cadastro');
       setIsButtonLoading(false);
     }
   }, [getValues, goBack]);

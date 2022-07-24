@@ -1,8 +1,9 @@
 import { CaretRight } from 'phosphor-react-native';
+import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 import { Text } from '../../../../../components/Text';
 
-export const Container = styled.TouchableOpacity.attrs(() => ({
+export const Container = styled(TouchableOpacity).attrs(() => ({
   activeOpacity: 0.4,
 }))`
   flex-direction: row;

@@ -1,5 +1,5 @@
 import React, { useCallback, useRef, useState } from 'react';
-import { TextInput } from 'react-native';
+import { Alert, TextInput } from 'react-native';
 import { useTheme } from 'styled-components/native';
 import { Control, useForm } from 'react-hook-form';
 import * as Yup from 'yup';
@@ -138,12 +138,14 @@ export function CustomerRegister() {
     try {
       // send the data to api
       console.log(data);
+
       // timeout only for visual effect while there isn't an api to send the data
       setTimeout(() => {
+        Alert.alert('Sucesso!', 'Cliente cadastrado');
         goBack();
       }, 2000);
-    } catch (err) {
-      console.log(err);
+    } catch {
+      Alert.alert('Erro!', 'Falha no cadastro');
       setIsButtonLoading(false);
     }
   }, [getValues, goBack]);
