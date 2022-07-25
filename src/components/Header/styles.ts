@@ -1,7 +1,8 @@
-import { Platform, StatusBar } from 'react-native';
+import { StatusBar } from 'react-native';
 import styled from 'styled-components/native';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
 import { CaretLeft, SignOut } from 'phosphor-react-native';
+
 import { Text } from '../Text';
 
 interface ContainerProps {
@@ -16,9 +17,7 @@ export const CustomStatusBar = styled(StatusBar).attrs(() => ({
 
 export const Container = styled.View<ContainerProps>`
   padding: 0 25px 30px;
-  height: ${Platform.OS === 'ios'
-    ? `${getStatusBarHeight(true) + 100}px`
-    : '100px'};
+  height: ${getStatusBarHeight() + 100}px;
 
   background-color: ${({ theme, backgroundColor = theme.colors.gray5 }) =>
     backgroundColor};

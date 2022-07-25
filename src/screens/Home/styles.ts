@@ -2,9 +2,14 @@ import styled from 'styled-components/native';
 
 import { Text } from '../../components/Text';
 
-export const Container = styled.View`
-  flex: 1;
-  padding: 40px 25px;
+export const Container = styled.ScrollView.attrs(() => ({
+  showsVerticalScrollIndicator: false,
+  contentContainerStyle: {
+    paddingTop: 40,
+    paddingHorizontal: 25,
+    paddingBottom: 80,
+  },
+}))`
   background-color: ${({ theme }) => theme.colors.white};
 `;
 
