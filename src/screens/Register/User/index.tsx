@@ -70,7 +70,7 @@ export function UserRegister() {
           label="Nome"
           name="name"
           error={errors.name?.message}
-          primaryColor={theme.colors.blue}
+          primaryColor={theme.colors.cyan}
         />
         <Space height={40} />
         <TextFormInput
@@ -78,7 +78,7 @@ export function UserRegister() {
           name="email"
           label="E-mail"
           error={errors.email?.message}
-          primaryColor={theme.colors.purple}
+          primaryColor={theme.colors.cyan}
         />
         <Space height={40} />
         <TextFormInput
@@ -87,7 +87,7 @@ export function UserRegister() {
           label="Telefone"
           mask="([00]) [00000]-[0000]"
           error={errors.phone?.message}
-          primaryColor={theme.colors.purple}
+          primaryColor={theme.colors.cyan}
         />
         <SubmitButton
           onPress={handleSubmit}
