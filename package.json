@@ -7,7 +7,8 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@hookform/resolvers": "^2.9.6",
@@ -15,7 +16,9 @@
     "@react-navigation/native": "^6.0.11",
     "@react-navigation/native-stack": "^6.7.0",
     "axios": "^0.27.2",
+    "patch-package": "^6.4.7",
     "phosphor-react-native": "^1.1.2",
+    "postinstall-postinstall": "^2.1.0",
     "react": "18.0.0",
     "react-hook-form": "^7.33.1",
     "react-native": "0.69.2",
