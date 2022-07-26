@@ -21,13 +21,10 @@ $ cd vidya-code
 # Instale as dependências
 $ yarn 
 
-# Aplique os patches em seu projeto
-$ yarn postinstall
-
 # Execute o Metro
 $ yarn start
 
-# Instale o aplicativo no sistema operacional desejado (iOS | Android)
+# Execute o aplicativo no sistema operacional desejado (iOS | Android)
 $ yarn ios
 $ yarn android
 ```
